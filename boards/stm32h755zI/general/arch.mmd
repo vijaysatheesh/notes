@@ -1,87 +1,104 @@
-flowchart LR
-    %% ===== Center Core =====
-    CORE["Arm Cortex-M7 (480 MHz)
-    +
-    Arm Cortex-M4 (240 MHz)
-    • FPU (DP-FPU)
-    • NVIC
-    • MPU
-    • JTAG/SWD/ETM
-    • ROM, PC-ROP, Anti-tamper
-    • AXI & Multi-AHB bus matrix
-    • 4x DMA
-    • True RNG"]
+flowchart TB
+    %% =====================
+    %% CORES
+    %% =====================
+    M7[Cortex-M7<br/>480 MHz]
+    M4[Cortex-M4<br/>240 MHz]
 
-    %% ===== Left: System =====
-    SYS["System
-    • SMPS, LDO, USB & backup regulators
-    • Multi-power domains
-    • XTAL oscillators (32 kHz – 48 MHz)
-    • Internal RC oscillators
-    • 3x PLL
-    • Clock control
-    • RTC / AWU
-    • SysTick
-    • 2x watchdogs
-    • 82–168 I/Os
-    • CRC
-    • Unique ID"]
+    %% =====================
+    %% HIGH SPEED BUS
+    %% =====================
+    AXI[AXI Bus<br/>64-bit]
 
-    CTRL["Control & Timers
-    • 2x 16-bit motor control PWM
-    • AC timer
-    • 10x 16-bit timers
-    • 2x 32-bit timers
-    • 5x low-power timers
-    • 16-bit high-resolution timer
-    • Extended temp support (125°C)"]
+    %% =====================
+    %% BUS MATRICES
+    %% =====================
+    AXIMAT[AXI Bus Matrix]
+    AHBMAT[AHB Bus Matrix]
 
-    SEC["Crypto / Security
-    • AES-256, GCM, CCM
-    • 3DES
-    • SHA-1 / SHA-256 / MD5 / HMAC
-    • Security services
-    • SFI & SB-SFU"]
+    %% =====================
+    %% MEMORY
+    %% =====================
+    ITCM[ITCM<br/>Instruction TCM]
+    DTCM[DTCM<br/>Data TCM]
+    SRAM_D1[SRAM D1]
+    SRAM_D2[SRAM D2]
+    SRAM_D3[SRAM D3]
+    FLASH[Internal Flash]
+    QSPI[QSPI / OCTOSPI]
+    FMC[FMC<br/>External SDRAM]
 
-    %% ===== Right: Memory =====
-    MEM["Memory
-    • 2 MB dual-bank Flash
-    • RAM 1056 KB (incl. 64 KB ITCM)
-    • FMC (SRAM/NOR/NAND/SDRAM)
-    • Dual Quad-SPI
-    • 1024 B + 4 KB backup SRAM"]
+    %% =====================
+    %% AHB PERIPHERALS
+    %% =====================
+    DMA[DMA / BDMA]
+    GPIO[GPIO]
+    ETH[Ethernet]
+    USB[USB OTG]
 
-    %% ===== Right: Connectivity =====
-    CONN["Connectivity
-    • TFT LCD controller
-    • HDMI-CEC
-    • SPI x6, I2S x3, I2C x4
-    • Camera interface
-    • Ethernet MAC 10/100 (IEEE 1588)
-    • MDIO slave
-    • FDCAN x2
-    • USB 2.0 OTG FS/HS + FS
-    • SDMMC x2
-    • USART x4 + UART x4 + LPUART
-    • SAI x4
-    • SPDIF Rx x4
-    • DFSDM
-    • SWP"]
+    %% =====================
+    %% APB BUSES
+    %% =====================
+    APB1[APB1]
+    APB2[APB2]
+    APB3[APB3]
+    APB4[APB4]
 
-    %% ===== Right: Analog =====
-    ANA["Analog
-    • 2x 12-bit DAC (2-ch)
-    • 3x 16-bit ADC (up to 3.6 Msps)
-    • 20 channels (up to 2 Msps)
-    • Temperature sensor
-    • 2x COMP
-    • 2x OpAmp"]
+    %% =====================
+    %% APB PERIPHERALS
+    %% =====================
+    TIM[Timers]
+    UART[USART / UART]
+    SPI[SPI / I2C]
+    ADC[ADC / DAC]
+    RTC[RTC / Backup]
 
-    %% ===== Connections =====
-    SYS --> CORE
-    CTRL --> CORE
-    SEC --> CORE
+    %% =====================
+    %% CORE CONNECTIONS
+    %% =====================
+    M7 --> AXI
+    AXI --> AXIMAT
 
-    CORE --> MEM
-    CORE --> CONN
-    CORE --> ANA
+    M7 --> ITCM
+    M7 --> DTCM
+
+    M4 --> AHBMAT
+
+    %% =====================
+    %% AXI CONNECTIONS
+    %% =====================
+    AXIMAT --> SRAM_D1
+    AXIMAT --> FLASH
+    AXIMAT --> QSPI
+    AXIMAT --> FMC
+    AXIMAT --> AHBMAT
+
+    %% =====================
+    %% AHB CONNECTIONS
+    %% =====================
+    AHBMAT --> SRAM_D2
+    AHBMAT --> SRAM_D3
+    AHBMAT --> DMA
+    AHBMAT --> GPIO
+    AHBMAT --> ETH
+    AHBMAT --> USB
+
+    %% =====================
+    %% APB BRIDGES
+    %% =====================
+    AHBMAT --> APB1
+    AHBMAT --> APB2
+    AHBMAT --> APB3
+    AHBMAT --> APB4
+
+    %% =====================
+    %% APB PERIPHERALS
+    %% =====================
+    APB1 --> TIM
+    APB1 --> UART
+
+    APB2 --> SPI
+    APB2 --> ADC
+
+    APB3 --> RTC
+    APB4 --> TIM
