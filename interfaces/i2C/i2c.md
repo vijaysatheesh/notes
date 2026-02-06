@@ -45,4 +45,43 @@ SDA ---
     - Fast mode plus (Fm+) - 1MHz
 - SMBus and PMBus compatible.
 - 7bit and 10bit addressing modes.
+- 1 Byte buffer with DMA
 
+
+- STM32h755ZI have 4 I2C buses
+    - I2C 1
+    - I2C 2
+    - I2C 3
+    - I2C 4
+
+
+- I2C can act in 4 modes in this MC:
+    - Slave Transmitter
+    - Slave Reciever
+    - Master Transmitter
+    - Master Reciever
+- By default it acts as slave. When the START condition is generated it switches to master and switch back to slave when STOP condition occures. This allows the multimaster operation.
+- I2C can be enabled by setting the PE bit in the ```I2C_CR1``` register
+
+![alt text](image-1.png)
+![alt text](init_flow.png)
+
+
+- The slave addresses can be configured via I2C_OAR1 and I2C_OAR2 registers. It will only work if any one of it is configured.
+
+
+![alt text](image-2.png)
+
+```c
+/* DUAL_CORE_BOOT_SYNC_SEQUENCE: Define for dual core boot synchronization    */
+/*                             demonstration code based on hardware semaphore */
+/* This define is present in both CM7/CM4 projects                            */
+/* To comment when developping/debugging on a single core                     */
+#define DUAL_CORE_BOOT_SYNC_SEQUENCE
+
+#if defined(DUAL_CORE_BOOT_SYNC_SEQUENCE)
+#ifndef HSEM_ID_0
+#define HSEM_ID_0 (0U) /* HW semaphore 0*/
+#endif
+#endif /* DUAL_CORE_BOOT_SYNC_SEQUENCE */
+```

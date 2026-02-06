@@ -1,0 +1,7 @@
+flowchart TD
+    A(Start) --> B[Clear the PE Bit in I2C_CR1]
+    B --> C["Configure ANFOFF and DNF[3:0] in I2C_CR1"]
+    C --> D["Configure PRESC[3:0], SDADEL[3:0], SCLDEL[3:0],SCLH[7:0], and SCLL[7:0] in I2C_TIMINGR"]
+    D --> E[Configure NOSTRETCH in I2C_CR1]
+    E --> F[Set PE bit in I2C_CR1]
+    
