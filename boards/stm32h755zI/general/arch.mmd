@@ -1,0 +1,87 @@
+flowchart LR
+    %% ===== Center Core =====
+    CORE["Arm Cortex-M7 (480 MHz)
+    +
+    Arm Cortex-M4 (240 MHz)
+    • FPU (DP-FPU)
+    • NVIC
+    • MPU
+    • JTAG/SWD/ETM
+    • ROM, PC-ROP, Anti-tamper
+    • AXI & Multi-AHB bus matrix
+    • 4x DMA
+    • True RNG"]
+
+    %% ===== Left: System =====
+    SYS["System
+    • SMPS, LDO, USB & backup regulators
+    • Multi-power domains
+    • XTAL oscillators (32 kHz – 48 MHz)
+    • Internal RC oscillators
+    • 3x PLL
+    • Clock control
+    • RTC / AWU
+    • SysTick
+    • 2x watchdogs
+    • 82–168 I/Os
+    • CRC
+    • Unique ID"]
+
+    CTRL["Control & Timers
+    • 2x 16-bit motor control PWM
+    • AC timer
+    • 10x 16-bit timers
+    • 2x 32-bit timers
+    • 5x low-power timers
+    • 16-bit high-resolution timer
+    • Extended temp support (125°C)"]
+
+    SEC["Crypto / Security
+    • AES-256, GCM, CCM
+    • 3DES
+    • SHA-1 / SHA-256 / MD5 / HMAC
+    • Security services
+    • SFI & SB-SFU"]
+
+    %% ===== Right: Memory =====
+    MEM["Memory
+    • 2 MB dual-bank Flash
+    • RAM 1056 KB (incl. 64 KB ITCM)
+    • FMC (SRAM/NOR/NAND/SDRAM)
+    • Dual Quad-SPI
+    • 1024 B + 4 KB backup SRAM"]
+
+    %% ===== Right: Connectivity =====
+    CONN["Connectivity
+    • TFT LCD controller
+    • HDMI-CEC
+    • SPI x6, I2S x3, I2C x4
+    • Camera interface
+    • Ethernet MAC 10/100 (IEEE 1588)
+    • MDIO slave
+    • FDCAN x2
+    • USB 2.0 OTG FS/HS + FS
+    • SDMMC x2
+    • USART x4 + UART x4 + LPUART
+    • SAI x4
+    • SPDIF Rx x4
+    • DFSDM
+    • SWP"]
+
+    %% ===== Right: Analog =====
+    ANA["Analog
+    • 2x 12-bit DAC (2-ch)
+    • 3x 16-bit ADC (up to 3.6 Msps)
+    • 20 channels (up to 2 Msps)
+    • Temperature sensor
+    • 2x COMP
+    • 2x OpAmp"]
+
+    %% ===== Connections =====
+    SYS --> CORE
+    CTRL --> CORE
+    SEC --> CORE
+
+    CORE --> MEM
+    CORE --> CONN
+    CORE --> ANA
