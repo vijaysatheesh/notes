@@ -10,9 +10,11 @@ SCL ---
 SDA ---
 
 ```
-| Start Bit (1) | Address (7bit) | W/R (1bit) | Data | Ack | 
-|:--|:--|--|:--|:--
 ![alt text](images.png)
+| Start Bit (1) | Address (7bit) | W/R (1bit) | Data | Ack | 
+|:--|:--|--|:--|:--|
+
+
 ## Procedure
 
 - Wait untill the bus is free (SDA and SDL are both high)
@@ -33,3 +35,14 @@ SDA ---
 
 ## Rise time and fall time limitations
 ![alt text](image.png)
+
+# I2C in STM32H755ZI
+
+- Multimaster Capablity
+- Modes:
+    - Standard mode (Sm) - 100KHz
+    - Fast mode (Fm) - 400KHz
+    - Fast mode plus (Fm+) - 1MHz
+- SMBus and PMBus compatible.
+- 7bit and 10bit addressing modes.
+
