@@ -72,16 +72,3 @@ SDA ---
 
 ![alt text](image-2.png)
 
-```c
-/* DUAL_CORE_BOOT_SYNC_SEQUENCE: Define for dual core boot synchronization    */
-/*                             demonstration code based on hardware semaphore */
-/* This define is present in both CM7/CM4 projects                            */
-/* To comment when developping/debugging on a single core                     */
-#define DUAL_CORE_BOOT_SYNC_SEQUENCE
-
-#if defined(DUAL_CORE_BOOT_SYNC_SEQUENCE)
-#ifndef HSEM_ID_0
-#define HSEM_ID_0 (0U) /* HW semaphore 0*/
-#endif
-#endif /* DUAL_CORE_BOOT_SYNC_SEQUENCE */
-```
