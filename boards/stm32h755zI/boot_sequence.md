@@ -168,30 +168,16 @@ Your application starts.
 ## Compact Flow
 
 
-Power On
-↓
-POR/BOR
-↓
-D3 domain ON
-↓
-RCC safe clocks (HSI)
-↓
-BOOT pins + BOOTC1/2 sampled
-↓
-0x00000000 remapped
-↓
-CM7 released
-↓
-Vector fetch
-↓
-Reset_Handler
-↓
-SystemInit()
-↓
-D1/D2 ON
-↓
-(Optional CM4 boot)
-↓
-```
-main()
-```
+1. Power On
+1. POR/BOR
+1. D3 domain ON
+1. RCC safe clocks (HSI)
+1. BOOT pins + BOOTC1/2 sampled
+1. 0x00000000 remapped
+1. CM7 released
+1. Vector fetch
+1. Reset_Handler
+1. SystemInit()
+1. D1/D2 ON
+1. (Optional CM4 boot)
+1. ```main()```
