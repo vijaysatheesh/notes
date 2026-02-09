@@ -1,0 +1,6 @@
+flowchart TD
+    A[Main] --> B[Read a button]
+    B --> |If button pressed| C[Sent myLedOn in UART] 
+    C --> B
+    D[I2C Recieve Inturrupt] --> |When Recieved ON| E[LED On]
+    F[USART Recieve Interrupt] --> |When recieved myLedOn| G[Transmit ON in I2C]

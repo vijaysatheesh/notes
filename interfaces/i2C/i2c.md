@@ -72,3 +72,11 @@ SDA ---
 
 ![alt text](image-2.png)
 
+## I2C Master Arbitration
+- A master will only start communication after a stop bit is recieved.
+- A master can continue comms by giving a start bit instead of stop bit. That's how master arbitration work in I2C.
+
+## I2C 10bit addressing
+- Sent address as two cycles
+- 11110xx,xxxxxxxx
+- 11110 recieved, slaves will realise it is a 10bit addressing scheme.
