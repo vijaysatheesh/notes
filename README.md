@@ -8,6 +8,7 @@
 * [## Interrupts in STM32H755ZI](boards/stm32h755zI/Interrupts.md)
 * [## UART/USART](boards/stm32h755zI/uart/uart.md)
 * [I2C Bus](interfaces/i2C/i2c.md)
+* [I2C Project Documentation](interfaces/i2C/project1/Project_1_Documentation.md)
 * [## Universal Serial Bus](interfaces/USB/usb.md)
 
-*Last updated: Fri 06 Feb 2026 05:40:15 PM IST*
+*Last updated: Mon 09 Feb 2026 03:30:36 PM IST*
