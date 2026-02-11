@@ -107,6 +107,4 @@ SPI uses a simple data frame.
 
 Total 6 SPI Lines. <br> Configured in ```SPI_CFG2``` register.
 
-
-
-<!-- Yet to add -->
+/// Will continue...
