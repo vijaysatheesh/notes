@@ -1,4 +1,4 @@
-## Interrupts in STM32H755ZI
+# Interrupts in STM32H755ZI
 
 Interrupts are like getting a phonecall while listening to music.
 - The music stops

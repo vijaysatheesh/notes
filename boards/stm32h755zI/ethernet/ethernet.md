@@ -1,4 +1,4 @@
-## NUCLEO144 H755ZIQ Ethernet
+# NUCLEO144 H755ZIQ Ethernet
 [Block Diagram](ethernet.mmd)
 ![alt text](ethernet.png)
 - The STM32h755Zi comes with an inbuilt MAC layer

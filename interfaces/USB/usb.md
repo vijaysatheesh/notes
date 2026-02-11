@@ -1,4 +1,4 @@
-## Universal Serial Bus
+# Universal Serial Bus
 
 - USB is a universal standard connectivity for data transfer as well as power.
 - This is a serial synchronous communication protocol.

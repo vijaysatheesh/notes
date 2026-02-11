@@ -1,4 +1,4 @@
-## STM32H755ZI
+# STM32H755ZI
 <!-- ![alt text](image-2.png) -->
 ![arch](arch.png)
 - ARM architecture
