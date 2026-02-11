@@ -1,4 +1,4 @@
-## UART/USART
+# UART/USART
 Both are serial data communication. 
 - UART works asynchrnously. It defines a baud rate at the start by both sides and transmit in that baud rate. This is less complex but more prone to error. 
 - USART uses a clock line also for more reliable and synchronous data transfer. More lines,More complex
