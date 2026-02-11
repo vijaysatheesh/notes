@@ -1,0 +1,5 @@
+flowchart TD
+    A[MASTER SHIFT REGISTER</br> MSB] --> B[MASTER SHIFT REGISTER </br>LSB]
+    B --> |MOSI| C[SLAVE SHIFT REGISTER</br> MSB]
+    C --> D[SLAVE SHIFT REGISTER</br> LSB]
+    D --> |MISO| A

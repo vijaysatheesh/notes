@@ -9,6 +9,7 @@
 * [## UART/USART](boards/stm32h755zI/uart/uart.md)
 * [I2C Bus](interfaces/i2C/i2c.md)
 * [I2C Dynamic Role Switching Project Documentation (](interfaces/i2C/project1/Project_1_Documentation.md)
+* [Serial Peripheral Interface](interfaces/spi/spi.md)
 * [## Universal Serial Bus](interfaces/USB/usb.md)
 
-*Last updated: Wed 11 Feb 2026 09:28:28 AM IST*
+*Last updated: Wed 11 Feb 2026 04:16:58 PM IST*
