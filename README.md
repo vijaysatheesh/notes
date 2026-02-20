@@ -11,5 +11,6 @@
 * [Serial Peripheral Interface](interfaces/spi/spi.md)
 * [UART/USART](interfaces/uart/uart.md)
 * [Universal Serial Bus](interfaces/USB/usb.md)
+* [FreeRTOS](rtos/freertos.md)
 
-*Last updated: Wed 11 Feb 2026 04:32:02 PM IST*
+*Last updated: Fri 20 Feb 2026 10:18:28 AM IST*
