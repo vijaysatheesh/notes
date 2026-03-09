@@ -1,4 +1,4 @@
-# I2C Dynamic Role Switching Project Documentation (
+# I2C Dynamic Role Switching Project Documentation
 
 **Target:** STM32H755ZI (NUCLEO)
 **Peripherals:** I2C2, UART5, BSP Button (EXTI), BSP LEDs, Dual-Core Boot Sync

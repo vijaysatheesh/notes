@@ -262,8 +262,33 @@ It is a mechanism used to share and sync common resources between two processes 
 
 ### Message Passing
 ![alt text](image.png)
+- This essentially uses messages to communicate between two processes.
+- Uses the kernel as a host to organize messages.
+- Communicate using:
+    - Sockets
+    - Messages Queues
+    - Pipes
+    - OS Signals
+- This is more safer than the "Sharing Memory" approach since. No sychronization is needed.
+- But a slow approach. kernel is involved. More system overhang.
 
+### Memory sharing
+- Instead of sending messages like cavemen, We share the same memory location between two processes. 
+- Lightning fast but comes with a lot of problems. If a process writes and another process reads at the same time, data will be corrupted.
+- We solve this issue with semaphores and mutexes, but it also brings more complications like deadlock and starvation.
+## AMP (Asymmetric Multi Processing)
+AMP is a technique of sharing task between two processors which follows a master slave relation.
+- One process or core is specified as master.
+- Only master communicates with the os.
+- The task is scheduled and controlled by the master.
+- This reduces conflict when sharing resources and access.
+
+### Disadvantages
+- If master failed. whole system failed.
+- more processor != more performance
+- subordinate process can be idle due to inablity of master to control.
 
 ## Used Resources
 [GeeksForGeeks RTOS](https://www.geeksforgeeks.org/operating-systems/real-time-operating-system-rtos/)
+
 [GeeksForGeeks IPC](https://www.geeksforgeeks.org/operating-systems/inter-process-communication-ipc/)
